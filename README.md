@@ -1,6 +1,6 @@
-# Capri — AI Security Research
+# Capri  AI Security Research
 
-Chercheur en sécurité IA — red-teaming d'agents conversationnels, assistants RAG et LLM. Spécialité : prompt injection, fuite de données contextuelle, contournement de garde-fous.
+Chercheur en sécurité IA  red-teaming d'agents conversationnels, assistants RAG et LLM. Spécialité : prompt injection, fuite de données contextuelle, contournement de garde-fous.
 
 Audits de sécurité IA disponibles pour entreprises déployant des chatbots/agents IA. DM pour discuter.
 
