@@ -30,6 +30,8 @@ body{
 .eyebrow::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--faible); box-shadow:0 0 8px 2px color-mix(in srgb, var(--faible) 70%, transparent)}
 .hero h1{font-size:46px; font-weight:800; letter-spacing:-0.03em; margin:0 0 14px; line-height:1.05; font-family:var(--font-mono); text-transform:lowercase; color:var(--fg); text-shadow:0 0 24px color-mix(in srgb, var(--accent) 45%, transparent)}
 .hero .tagline{font-size:17px; color:var(--fg-muted); max-width:620px; line-height:1.55; margin:0 0 32px}
+.hero-top{display:flex; align-items:center; gap:20px; margin-bottom:24px}
+.avatar{width:72px; height:72px; border-radius:12px; object-fit:cover; border:1px solid var(--accent); box-shadow:0 0 24px -4px color-mix(in srgb, var(--accent) 70%, transparent); flex:none}
 
 .stat-row{display:flex; gap:28px; flex-wrap:wrap}
 .stat{font-family:var(--font-mono)}
@@ -108,7 +110,10 @@ footer .note{font-size:12px; color:var(--fg-muted)}
 
   <!-- HERO -->
   <section class="hero">
-    <div class="eyebrow">Disponible pour audits</div>
+    <div class="hero-top">
+      <img class="avatar" src="assets/avatar.jpg" alt="Capri">
+      <div class="eyebrow" style="margin-bottom:0">Disponible pour audits</div>
+    </div>
     <h1>capri</h1>
     <p class="tagline">Chercheur en sécurité IA — audits de robustesse pour chatbots, assistants RAG et agents LLM. Spécialité : prompt injection, fuite de données contextuelle, contournement de garde-fous.</p>
     <div class="stat-row">
@@ -119,7 +124,7 @@ footer .note{font-size:12px; color:var(--fg-muted)}
     <div class="cta">
       <div class="txt"><b>Vous déployez un chatbot ou un agent IA en production ?</b><span>Audit de robustesse offensif, rapport actionnable sous 1 semaine.</span></div>
       <div class="links">
-        <a href="https://github.com/caprisecurity" target="_blank" rel="noopener">Profil GitHub</a>
+        <a href="https://x.com/capri207" target="_blank" rel="noopener">Contact sur X</a>
         <a class="secondary" href="#case-study">Voir un audit</a>
       </div>
     </div>
@@ -241,9 +246,9 @@ footer .note{font-size:12px; color:var(--fg-muted)}
 
   <footer>
     <div class="links">
-      <a href="https://github.com/caprisecurity" target="_blank" rel="noopener">Discuter d'un audit →</a>
+      <a href="https://x.com/capri207" target="_blank" rel="noopener">Discuter d'un audit →</a>
     </div>
-    <div class="note">Méthodologie complète et cartographie détaillée disponibles sur demande · Liens X / Discord sur le profil GitHub</div>
+    <div class="note">Méthodologie complète et cartographie détaillée disponibles sur demande</div>
   </footer>
 
 </div>
