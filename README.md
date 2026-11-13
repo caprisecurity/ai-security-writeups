@@ -49,4 +49,4 @@ En environnement de simulation (modèle local, reconstruction fidèle du system 
 
 ## 📬 Contact
 
-DM ouvert pour audits de sécurité IA.
+DM ouvert pour audits de sécurité IA — liens X et Discord sur le profil GitHub.
