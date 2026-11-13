@@ -7,29 +7,28 @@
 <meta name="description" content="Audits de robustesse pour chatbots, assistants RAG et agents LLM. Prompt injection, fuite de données contextuelle, contournement de garde-fous.">
 <style>
 :root{
-  --bg:#f4f6f8; --panel:#ffffff; --border:#e2e6ea;
-  --fg:#1a2430; --fg-muted:#5c6b7a; --accent:#0e7c86; --accent-soft:#e3f1f2;
-  --crit:#c23b3b; --haut:#d98324; --moy:#c9a227; --faible:#4a8c5e;
+  --bg:#060608; --panel:#0e0e13; --border:#271a24;
+  --fg:#f1eef4; --fg-muted:#9a8fa3; --accent:#ff2e8a; --accent-soft:#2a0f1e;
+  --crit:#ff3b5c; --haut:#ff8a3d; --moy:#ffd23d; --faible:#39ffb0;
   --font-sans: "Inter", -apple-system, sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
 }
-@media (prefers-color-scheme: dark){
-  :root{
-    --bg:#11161c; --panel:#171e26; --border:#2a333d;
-    --fg:#e7edf2; --fg-muted:#8b99a7; --accent:#2fb8c4; --accent-soft:#132b2e;
-    --crit:#e2605f; --haut:#e8a455; --moy:#d9bd57; --faible:#5fb378;
-  }
-}
 *{box-sizing:border-box}
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap');
-body{margin:0; background:var(--bg); color:var(--fg); font-family:var(--font-sans); -webkit-font-smoothing:antialiased}
+body{
+  margin:0; background:var(--bg); color:var(--fg); font-family:var(--font-sans); -webkit-font-smoothing:antialiased;
+  background-image:
+    linear-gradient(rgba(255,46,138,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,46,138,0.04) 1px, transparent 1px);
+  background-size:36px 36px;
+}
 .wrap{max-width:900px;margin:0 auto;padding:0 20px}
 
 /* ---- Hero ---- */
 .hero{padding:72px 0 48px; border-bottom:1px solid var(--border)}
-.eyebrow{font-family:var(--font-mono); font-size:12px; color:var(--accent); letter-spacing:.1em; text-transform:uppercase; font-weight:600; margin-bottom:16px; display:flex; align-items:center; gap:8px}
-.eyebrow::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--faible); box-shadow:0 0 0 3px color-mix(in srgb, var(--faible) 25%, transparent)}
-.hero h1{font-size:42px; font-weight:800; letter-spacing:-0.03em; margin:0 0 14px; line-height:1.05}
+.eyebrow{font-family:var(--font-mono); font-size:12px; color:var(--accent); letter-spacing:.14em; text-transform:uppercase; font-weight:600; margin-bottom:16px; display:flex; align-items:center; gap:8px; text-shadow:0 0 12px color-mix(in srgb, var(--accent) 60%, transparent)}
+.eyebrow::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--faible); box-shadow:0 0 8px 2px color-mix(in srgb, var(--faible) 70%, transparent)}
+.hero h1{font-size:46px; font-weight:800; letter-spacing:-0.03em; margin:0 0 14px; line-height:1.05; font-family:var(--font-mono); text-transform:lowercase; color:var(--fg); text-shadow:0 0 24px color-mix(in srgb, var(--accent) 45%, transparent)}
 .hero .tagline{font-size:17px; color:var(--fg-muted); max-width:620px; line-height:1.55; margin:0 0 32px}
 
 .stat-row{display:flex; gap:28px; flex-wrap:wrap}
@@ -38,12 +37,12 @@ body{margin:0; background:var(--bg); color:var(--fg); font-family:var(--font-san
 .stat .l{font-size:11.5px; color:var(--fg-muted); text-transform:uppercase; letter-spacing:.05em; margin-top:2px}
 
 /* ---- CTA banner ---- */
-.cta{display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; background:var(--accent-soft); border:1px solid var(--accent); border-radius:12px; padding:20px 24px; margin:32px 0 0}
+.cta{display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; background:var(--accent-soft); border:1px solid var(--accent); border-radius:10px; padding:20px 24px; margin:32px 0 0; box-shadow:0 0 30px -8px color-mix(in srgb, var(--accent) 50%, transparent)}
 .cta .txt b{display:block; font-size:15px; margin-bottom:2px}
 .cta .txt span{font-size:13px; color:var(--fg-muted)}
 .cta .links{display:flex; gap:10px; flex-wrap:wrap}
-.cta .links a{font-family:var(--font-mono); font-size:13px; font-weight:600; color:var(--bg); background:var(--accent); padding:9px 16px; border-radius:7px; text-decoration:none; white-space:nowrap}
-.cta .links a.secondary{background:transparent; color:var(--accent); border:1px solid var(--accent)}
+.cta .links a{font-family:var(--font-mono); font-size:13px; font-weight:700; color:#060608; background:var(--accent); padding:9px 16px; border-radius:6px; text-decoration:none; white-space:nowrap; box-shadow:0 0 16px -2px color-mix(in srgb, var(--accent) 70%, transparent)}
+.cta .links a.secondary{background:transparent; color:var(--accent); border:1px solid var(--accent); box-shadow:none}
 
 /* ---- Content sections ---- */
 .section{padding:48px 0; border-bottom:1px solid var(--border)}
@@ -54,17 +53,17 @@ body{margin:0; background:var(--bg); color:var(--fg); font-family:var(--font-san
 
 .blocks{display:grid; grid-template-columns:1fr 1fr; gap:16px}
 @media (max-width:640px){ .blocks{grid-template-columns:1fr} }
-.block{background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:22px}
+.block{background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:22px}
 .block h3{font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--accent); font-weight:700; margin:0 0 14px}
 .block ul{margin:0; padding-left:18px; font-size:14px; line-height:1.8; color:var(--fg)}
 .block p{margin:0; font-size:14px; line-height:1.65; color:var(--fg-muted)}
 
 .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px}
-.chip{font-family:var(--font-mono); font-size:11.5px; font-weight:600; background:var(--panel); border:1px solid var(--border); color:var(--fg-muted); padding:5px 11px; border-radius:999px}
+.chip{font-family:var(--font-mono); font-size:11.5px; font-weight:600; background:var(--accent-soft); border:1px solid color-mix(in srgb, var(--accent) 40%, var(--border)); color:var(--accent); padding:5px 11px; border-radius:999px}
 
 .methodo{display:flex; flex-direction:column; gap:10px}
-.step{display:flex; gap:16px; align-items:flex-start; background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:16px 18px}
-.step .num{font-family:var(--font-mono); font-weight:700; color:var(--accent); font-size:15px; flex:none; width:24px; height:24px; border-radius:50%; background:var(--accent-soft); display:flex; align-items:center; justify-content:center}
+.step{display:flex; gap:16px; align-items:flex-start; background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:16px 18px}
+.step .num{font-family:var(--font-mono); font-weight:700; color:var(--accent); font-size:15px; flex:none; width:24px; height:24px; border-radius:50%; background:var(--accent-soft); border:1px solid color-mix(in srgb, var(--accent) 50%, transparent); display:flex; align-items:center; justify-content:center}
 .step .txt b{font-size:14.5px} .step .txt span{display:block; font-size:13px; color:var(--fg-muted); margin-top:3px; line-height:1.5}
 
 /* ---- Case study ---- */
@@ -75,7 +74,7 @@ body{margin:0; background:var(--bg); color:var(--fg); font-family:var(--font-san
 
 .scorecards{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:24px}
 @media (max-width:640px){ .scorecards{grid-template-columns:repeat(2,1fr)} }
-.card{background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:16px}
+.card{background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:16px}
 .card .lbl{font-size:11px; color:var(--fg-muted); text-transform:uppercase; letter-spacing:.05em; font-weight:600}
 .card .val{font-family:var(--font-mono); font-size:28px; font-weight:600; margin-top:6px; font-variant-numeric:tabular-nums}
 .card.verdict .val{font-size:17px; font-weight:700; font-family:var(--font-sans)}
@@ -99,7 +98,7 @@ body{margin:0; background:var(--bg); color:var(--fg); font-family:var(--font-san
 /* ---- Footer ---- */
 footer{padding:40px 0 60px; text-align:center}
 footer .links{display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-bottom:14px}
-footer .links a{font-family:var(--font-mono); font-size:13px; font-weight:600; color:var(--bg); background:var(--accent); padding:9px 18px; border-radius:7px; text-decoration:none}
+footer .links a{font-family:var(--font-mono); font-size:13px; font-weight:700; color:#060608; background:var(--accent); padding:9px 18px; border-radius:6px; text-decoration:none; box-shadow:0 0 16px -2px color-mix(in srgb, var(--accent) 70%, transparent)}
 footer .note{font-size:12px; color:var(--fg-muted)}
 </style>
 </head>
