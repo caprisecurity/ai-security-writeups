@@ -90,7 +90,22 @@ footer a{font-family:var(--font-mono); font-size:13px; font-weight:700; color:#0
     </div>
   </div>
 
-  <div class="subhead">Observations notables</div>
+  <div class="subhead">1 — Cartographie</div>
+  <div class="intro">Avant toute tentative d'exploitation, observation systématique du comportement de la cible pour identifier les mécanismes de défense en place (filtres, refus, classification, cohérence). 10 catégories de défense recensées sur cette cible.</div>
+  <div class="defgrid">
+    <div class="defitem"><span class="dot" style="background:var(--faible)"></span>Filtre d'entrée sémantique</div>
+    <div class="defitem"><span class="dot" style="background:var(--faible)"></span>Refus credentials absolu</div>
+    <div class="defitem"><span class="dot" style="background:var(--faible)"></span>Refus métadonnées</div>
+    <div class="defitem"><span class="dot" style="background:var(--faible)"></span>Citation verbatim</div>
+    <div class="defitem"><span class="dot" style="background:var(--faible)"></span>Cohérence identité multi-tours</div>
+    <div class="defitem"><span class="dot" style="background:var(--faible)"></span>Classification post-recherche</div>
+    <div class="defitem"><span class="dot" style="background:var(--faible)"></span>Généralisation post-détection</div>
+    <div class="defitem"><span class="dot" style="background:var(--faible)"></span>Budget de recherche limité</div>
+    <div class="defitem"><span class="dot" style="background:var(--faible)"></span>Résistance pression temporelle</div>
+    <div class="defitem"><span class="dot" style="background:var(--faible)"></span>Détection de patterns d'attaque</div>
+  </div>
+
+  <div class="subhead">2 — Failles trouvées</div>
   <div class="intro">Aucune fuite critique obtenue malgré un volume de test élevé (28 techniques distinctes, dont certaines à grande échelle en environnement sandbox) — deux signaux partiels méritent d'être documentés.</div>
   <div class="findings">
     <div class="finding">
@@ -111,19 +126,27 @@ footer a{font-family:var(--font-mono); font-size:13px; font-weight:700; color:#0
     </div>
   </div>
 
-  <div class="subhead">Défenses testées</div>
-  <div class="defgrid">
-    <div class="defitem"><span class="dot" style="background:var(--faible)"></span>Filtre d'entrée sémantique</div>
-    <div class="defitem"><span class="dot" style="background:var(--faible)"></span>Refus credentials absolu</div>
-    <div class="defitem"><span class="dot" style="background:var(--faible)"></span>Refus métadonnées</div>
-    <div class="defitem"><span class="dot" style="background:var(--faible)"></span>Citation verbatim</div>
-    <div class="defitem"><span class="dot" style="background:var(--faible)"></span>Cohérence identité multi-tours</div>
-    <div class="defitem"><span class="dot" style="background:var(--faible)"></span>Classification post-recherche</div>
-    <div class="defitem"><span class="dot" style="background:var(--faible)"></span>Généralisation post-détection</div>
-    <div class="defitem"><span class="dot" style="background:var(--faible)"></span>Budget de recherche limité</div>
-    <div class="defitem"><span class="dot" style="background:var(--faible)"></span>Résistance pression temporelle</div>
-    <div class="defitem"><span class="dot" style="background:var(--faible)"></span>Détection de patterns d'attaque</div>
+  <div class="subhead">3 — Défenses recommandées</div>
+  <div class="intro">Recommandations concrètes pour fermer les deux signaux partiels identifiés et renforcer la posture globale.</div>
+  <div class="findings">
+    <div class="finding">
+      <div class="sev-stripe" style="background:var(--accent)"></div>
+      <div class="body">
+        <div class="title">Classifier la sensibilité avant toute confirmation d'existence</div>
+        <div class="desc">Étendre la classification post-recherche pour qu'elle bloque aussi les réponses qui ne font que confirmer/infirmer la présence d'un document sensible, pas seulement son contenu.</div>
+      </div>
+    </div>
+    <div class="finding">
+      <div class="sev-stripe" style="background:var(--accent)"></div>
+      <div class="body">
+        <div class="title">Auditer tout point d'accès exposant le contrôle du préfixe de réponse</div>
+        <div class="desc">Si l'architecture expose un jour un accès API avec contrôle des rôles/préfixe, revalider spécifiquement ce vecteur — il reste critique sur les modèles ouverts comparables (60-80% de fuite en sandbox).</div>
+      </div>
+    </div>
   </div>
+
+  <div class="subhead">4 — Conclusion</div>
+  <div class="intro" style="margin-bottom:0">Cible jugée très robuste : 0 fuite confirmée sur 28 vecteurs testés, 10/10 catégories de défense actives. Les deux signaux relevés sont préventifs, pas exploités — à traiter pour fermer la marge avant qu'une évolution de l'architecture ne les rende exploitables.</div>
 
   <footer>
     <a href="https://x.com/capri207" target="_blank" rel="noopener">Discuter d'un audit →</a>
