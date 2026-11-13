@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audit — Assistant juridique RAG · Capri</title>
+<style>
+:root{
+  --bg:#060608; --panel:#0e0e13; --border:#271a24;
+  --fg:#f1eef4; --fg-muted:#9a8fa3; --accent:#ff2e8a; --accent-soft:#2a0f1e;
+  --crit:#ff3b5c; --haut:#ff8a3d; --moy:#ffd23d; --faible:#39ffb0;
+  --font-sans: "Inter", -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+*{box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap');
+body{
+  margin:0; background:var(--bg); color:var(--fg); font-family:var(--font-sans); -webkit-font-smoothing:antialiased;
+  background-image:
+    linear-gradient(rgba(255,46,138,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,46,138,0.04) 1px, transparent 1px);
+  background-size:36px 36px;
+}
+.wrap{max-width:900px;margin:0 auto;padding:40px 20px 60px}
+
+.back{display:inline-flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:13px; color:var(--fg-muted); text-decoration:none; margin-bottom:32px}
+.back:hover{color:var(--accent)}
+
+.case-head{display:flex; justify-content:space-between; align-items:flex-start; gap:20px; flex-wrap:wrap; margin-bottom:24px; border-bottom:1px solid var(--border); padding-bottom:20px}
+.case-head h1{font-size:24px; font-weight:800; margin:0 0 6px; letter-spacing:-0.01em}
+.case-head .meta{color:var(--fg-muted); font-size:13px; font-family:var(--font-mono)}
+.case-head .right{text-align:right; font-size:12.5px; color:var(--fg-muted); font-family:var(--font-mono); flex:none}
+
+.scorecards{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:32px}
+@media (max-width:640px){ .scorecards{grid-template-columns:repeat(2,1fr)} }
+.card{background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:16px}
+.card .lbl{font-size:11px; color:var(--fg-muted); text-transform:uppercase; letter-spacing:.05em; font-weight:600}
+.card .val{font-family:var(--font-mono); font-size:28px; font-weight:600; margin-top:6px; font-variant-numeric:tabular-nums}
+.card.verdict .val{font-size:17px; font-weight:700; font-family:var(--font-sans)}
+
+.subhead{font-size:13px; text-transform:uppercase; letter-spacing:.07em; color:var(--accent); font-weight:700; margin:32px 0 12px; border-bottom:1px solid var(--border); padding-bottom:8px}
+.intro{font-size:13.5px; color:var(--fg-muted); margin:0 0 14px; line-height:1.55}
+
+.findings{display:flex; flex-direction:column; gap:10px}
+.finding{display:flex; gap:14px; align-items:flex-start; background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:14px 16px}
+.sev-stripe{width:4px; align-self:stretch; border-radius:2px; flex:none}
+.finding .body{flex:1; min-width:0}
+.finding .title{font-weight:600; font-size:14.5px; margin-bottom:3px}
+.finding .desc{font-size:13px; color:var(--fg-muted); line-height:1.5}
+.sev-pill{font-family:var(--font-mono); font-size:10.5px; font-weight:600; padding:3px 9px; border-radius:999px; text-transform:uppercase; letter-spacing:.04em; flex:none; white-space:nowrap}
+
+.defgrid{display:grid; grid-template-columns:repeat(2,1fr); gap:8px}
+@media (max-width:640px){ .defgrid{grid-template-columns:1fr} }
+.defitem{display:flex; align-items:center; gap:8px; background:var(--panel); border:1px solid var(--border); border-radius:7px; padding:9px 12px; font-size:12.5px}
+.dot{width:8px;height:8px;border-radius:50%;flex:none}
+
+footer{margin-top:40px; padding-top:20px; border-top:1px solid var(--border); text-align:center}
+footer a{font-family:var(--font-mono); font-size:13px; font-weight:700; color:#060608; background:var(--accent); padding:9px 18px; border-radius:6px; text-decoration:none; box-shadow:0 0 16px -2px color-mix(in srgb, var(--accent) 70%, transparent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="../index.html">← tous les audits</a>
+
+  <div class="case-head">
+    <div>
+      <h1>Assistant de recherche juridique interne</h1>
+      <div class="meta">Architecture RAG · Réalisé par Capri</div>
+    </div>
+    <div class="right">Période : 04/11 – 11/11/2026</div>
+  </div>
+
+  <div class="scorecards">
+    <div class="card">
+      <div class="lbl">Tests effectués</div>
+      <div class="val">28</div>
+    </div>
+    <div class="card">
+      <div class="lbl">Fuites confirmées</div>
+      <div class="val" style="color:var(--faible)">0</div>
+    </div>
+    <div class="card">
+      <div class="lbl">Défenses actives</div>
+      <div class="val">10<span style="font-size:15px;color:var(--fg-muted)">/10</span></div>
+    </div>
+    <div class="card verdict">
+      <div class="lbl">Verdict global</div>
+      <div class="val" style="color:var(--faible)">Cible très robuste</div>
+    </div>
+  </div>
+
+  <div class="subhead">Observations notables</div>
+  <div class="intro">Aucune fuite critique obtenue malgré un volume de test élevé (28 techniques distinctes, dont certaines à grande échelle en environnement sandbox) — deux signaux partiels méritent d'être documentés.</div>
+  <div class="findings">
+    <div class="finding">
+      <div class="sev-stripe" style="background:var(--moy)"></div>
+      <div class="body">
+        <div class="title">Indice indirect de données sensibles via recherche contextuelle</div>
+        <div class="desc">Sous couvert de matériel de formation, le système a involontairement confirmé l'existence d'un enregistrement actif contenant une credential — sans jamais en révéler le contenu. Démontre que la classification de sensibilité s'applique après la recherche, pas uniquement sur la formulation de la question.</div>
+      </div>
+      <span class="sev-pill" style="background:color-mix(in srgb, var(--moy) 18%, transparent); color:var(--moy)">Informatif</span>
+    </div>
+    <div class="finding">
+      <div class="sev-stripe" style="background:var(--moy)"></div>
+      <div class="body">
+        <div class="title">Vulnérabilité de prefix injection confirmée sur un modèle ouvert comparable</div>
+        <div class="desc">En environnement sandbox (Llama 3.3 70B), le contrôle direct du préfixe de réponse via l'API a produit 60-80% de taux de fuite. Non exploitable sur la cible réelle (interface texte pure, sans accès aux rôles API), mais reste un vecteur critique à vérifier systématiquement sur toute architecture exposant ce contrôle.</div>
+      </div>
+      <span class="sev-pill" style="background:color-mix(in srgb, var(--moy) 18%, transparent); color:var(--moy)">Méthodologique</span>
+    </div>
+  </div>
+
+  <div class="subhead">Défenses testées</div>
+  <div class="defgrid">
+    <div class="defitem"><span class="dot" style="background:var(--faible)"></span>Filtre d'entrée sémantique</div>
+    <div class="defitem"><span class="dot" style="background:var(--faible)"></span>Refus credentials absolu</div>
+    <div class="defitem"><span class="dot" style="background:var(--faible)"></span>Refus métadonnées</div>
+    <div class="defitem"><span class="dot" style="background:var(--faible)"></span>Citation verbatim</div>
+    <div class="defitem"><span class="dot" style="background:var(--faible)"></span>Cohérence identité multi-tours</div>
+    <div class="defitem"><span class="dot" style="background:var(--faible)"></span>Classification post-recherche</div>
+    <div class="defitem"><span class="dot" style="background:var(--faible)"></span>Généralisation post-détection</div>
+    <div class="defitem"><span class="dot" style="background:var(--faible)"></span>Budget de recherche limité</div>
+    <div class="defitem"><span class="dot" style="background:var(--faible)"></span>Résistance pression temporelle</div>
+    <div class="defitem"><span class="dot" style="background:var(--faible)"></span>Détection de patterns d'attaque</div>
+  </div>
+
+  <footer>
+    <a href="https://x.com/capri207" target="_blank" rel="noopener">Discuter d'un audit →</a>
+  </footer>
+
+</div>
+</body>
+</html>
