@@ -31,14 +31,11 @@ h1{font-size:24px; font-weight:800; margin:0 0 8px; letter-spacing:-0.01em}
 .chips{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:32px}
 .chip{font-family:var(--font-mono); font-size:11.5px; font-weight:600; background:var(--accent-soft); border:1px solid color-mix(in srgb, var(--accent) 40%, var(--border)); color:var(--accent); padding:5px 11px; border-radius:999px}
 
-.liens{display:flex; flex-direction:column; gap:10px}
-.lien-card{display:flex; justify-content:space-between; align-items:center; background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:16px 18px; text-decoration:none; color:var(--fg); transition:border-color .15s ease, transform .15s ease}
-.lien-card:hover{border-color:var(--accent); transform:translateY(-2px)}
-
-
-footer.legal{text-align:center; padding:40px 0 10px}
-footer.legal a{font-family:var(--font-mono); font-size:11px; color:#5a5460; text-decoration:none}
-footer.legal a:hover{color:var(--fg-muted)}
+.liens{display:flex; flex-direction:column}
+.lien-card{display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border); padding:16px 4px; text-decoration:none; color:var(--fg); transition:color .15s ease}
+.liens .lien-card:last-child{border-bottom:1px solid var(--border)}
+.lien-card:hover{color:var(--accent)}
+.lien-card .num{font-family:var(--font-mono); font-size:12px; color:var(--fg-muted); margin-right:14px}
 .lien-card .titre{font-size:14.5px; font-weight:700}
 .lien-card .desc{font-size:12.5px; color:var(--fg-muted); margin-top:3px}
 .lien-card .arrow{color:var(--accent); font-family:var(--font-mono); font-size:16px; flex:none}
@@ -61,23 +58,32 @@ footer.legal a:hover{color:var(--fg-muted)}
 
   <div class="liens">
     <a class="lien-card" href="https://huntr.com/users/capri207" target="_blank" rel="noopener">
-      <div>
-        <div class="titre">Profil Huntr</div>
-        <div class="desc">Challenges sécurité IA, sponsorisés par Palo Alto Networks</div>
+      <div style="display:flex; align-items:baseline">
+        <span class="num">01 //</span>
+        <div>
+          <div class="titre">Profil Huntr</div>
+          <div class="desc">Challenges sécurité IA, sponsorisés par Palo Alto Networks</div>
+        </div>
       </div>
       <div class="arrow">→</div>
     </a>
     <a class="lien-card" href="https://discord.com/users/1565162892402098179" target="_blank" rel="noopener">
-      <div>
-        <div class="titre">Discord</div>
-        <div class="desc">@capri_18210</div>
+      <div style="display:flex; align-items:baseline">
+        <span class="num">02 //</span>
+        <div>
+          <div class="titre">Discord</div>
+          <div class="desc">@capri_18210</div>
+        </div>
       </div>
       <div class="arrow">→</div>
     </a>
     <a class="lien-card" href="https://x.com/capri207" target="_blank" rel="noopener">
-      <div>
-        <div class="titre">X</div>
-        <div class="desc">@capri207</div>
+      <div style="display:flex; align-items:baseline">
+        <span class="num">03 //</span>
+        <div>
+          <div class="titre">X</div>
+          <div class="desc">@capri207</div>
+        </div>
       </div>
       <div class="arrow">→</div>
     </a>
