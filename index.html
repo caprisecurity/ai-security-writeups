@@ -37,6 +37,11 @@ body{
 .hero .links a.secondary:hover{background:var(--accent-soft)}
 .hero .credibility{font-family:var(--font-mono); font-size:12px; color:var(--accent); letter-spacing:.02em; margin:0 0 20px}
 
+.social{display:flex; gap:14px; justify-content:center; padding:0 0 60px}
+.social a{display:flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:50%; background:var(--panel); border:1px solid var(--border); transition:border-color .15s ease, transform .15s ease}
+.social a:hover{border-color:var(--accent); transform:translateY(-2px)}
+.social img{width:18px; height:18px; border-radius:3px; object-fit:contain}
+
 /* ---- Audits grid ---- */
 .audits{padding:0 0 80px}
 .audits .label{font-family:var(--font-mono); font-size:11.5px; text-transform:uppercase; letter-spacing:.1em; color:var(--fg-muted); margin-bottom:16px}
@@ -64,9 +69,20 @@ body{
     <div class="links">
       <a class="secondary" href="audit.html">Audit offensif</a>
       <a class="secondary" href="bugbounty.html">Recherche & Bug Bounty</a>
-      <a class="secondary" href="https://github.com/caprisecurity" target="_blank" rel="noopener">GitHub</a>
     </div>
   </section>
+
+  <div class="social">
+    <a href="https://discord.com/users/1565162892402098179" target="_blank" rel="noopener" aria-label="Discord">
+      <img src="https://www.google.com/s2/favicons?domain=discord.com&sz=64" alt="">
+    </a>
+    <a href="https://x.com/capri207" target="_blank" rel="noopener" aria-label="X">
+      <img src="https://www.google.com/s2/favicons?domain=x.com&sz=64" alt="">
+    </a>
+    <a href="https://github.com/caprisecurity" target="_blank" rel="noopener" aria-label="GitHub">
+      <img src="https://www.google.com/s2/favicons?domain=github.com&sz=64" alt="">
+    </a>
+  </div>
 
 </div>
 
