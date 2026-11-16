@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Méthodologie — Capri</title>
+<style>
+:root{
+  --bg:#060608; --panel:#0e0e13; --border:#271a24;
+  --fg:#f1eef4; --fg-muted:#9a8fa3; --accent:#ff2e8a; --accent-soft:#2a0f1e;
+  --font-sans: "Inter", -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+*{box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap');
+body{
+  margin:0; background:var(--bg); color:var(--fg); font-family:var(--font-sans); -webkit-font-smoothing:antialiased;
+  background-image:
+    linear-gradient(rgba(255,46,138,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,46,138,0.04) 1px, transparent 1px);
+  background-size:36px 36px;
+}
+.wrap{max-width:720px;margin:0 auto;padding:40px 20px 60px}
+
+.back{display:inline-flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:13px; color:var(--fg-muted); text-decoration:none; margin-bottom:32px}
+.back:hover{color:var(--accent)}
+
+h1{font-size:24px; font-weight:800; margin:0 0 8px; letter-spacing:-0.01em}
+.sub{font-size:13.5px; color:var(--fg-muted); margin:0 0 32px; line-height:1.5}
+
+.methodo-steps{display:flex; flex-direction:column; gap:10px}
+.methodo-step{display:flex; gap:14px; align-items:flex-start; background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:16px 18px}
+.methodo-step .num{font-family:var(--font-mono); font-weight:700; color:var(--accent); font-size:14px; flex:none; width:26px; height:26px; border-radius:50%; background:var(--accent-soft); border:1px solid color-mix(in srgb, var(--accent) 50%, transparent); display:flex; align-items:center; justify-content:center}
+.methodo-step .txt b{font-size:14.5px; display:block; margin-bottom:3px}
+.methodo-step .txt span{font-size:13px; color:var(--fg-muted); line-height:1.5}
+
+.methodo-note{font-size:13px; color:var(--fg-muted); margin-top:20px; line-height:1.6; border-top:1px solid var(--border); padding-top:20px}
+
+footer{margin-top:40px; text-align:center}
+footer a{font-family:var(--font-mono); font-size:13px; font-weight:700; color:#060608; background:var(--accent); padding:9px 18px; border-radius:6px; text-decoration:none; box-shadow:0 0 16px -2px color-mix(in srgb, var(--accent) 70%, transparent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="index.html">← accueil</a>
+
+  <h1>Méthodologie — audit type (5 jours)</h1>
+  <p class="sub">Comment se déroule un audit de sécurité IA avec Capri, étape par étape.</p>
+
+  <div class="methodo-steps">
+    <div class="methodo-step"><div class="num">1</div><div class="txt"><b>Cadrage</b><span>Périmètre exact, autorisation écrite, règles d'engagement définies avant tout test.</span></div></div>
+    <div class="methodo-step"><div class="num">2</div><div class="txt"><b>Cartographie</b><span>Test systématique des mécanismes de défense en place (filtres, refus, cohérence, classification).</span></div></div>
+    <div class="methodo-step"><div class="num">3</div><div class="txt"><b>Exploitation ciblée</b><span>Attaque des angles morts identifiés, avec mutation/itération des techniques, documentée pas à pas.</span></div></div>
+    <div class="methodo-step"><div class="num">4</div><div class="txt"><b>Rapport & recommandations</b><span>Scorecard, failles classées par sévérité, recommandations concrètes de correction.</span></div></div>
+  </div>
+
+  <div class="methodo-note">Je trouve et documente les failles ; la correction est mise en œuvre par votre équipe technique.</div>
+
+  <footer>
+    <a href="https://x.com/capri207" target="_blank" rel="noopener">Discuter d'un audit →</a>
+  </footer>
+
+</div>
+</body>
+</html>
