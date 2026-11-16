@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Capri — Sécurité IA & Red-teaming</title>
+<title>Capri — Sécurité IA & Red Teaming</title>
 <meta name="description" content="Audits de robustesse offensifs pour toute forme d'IA ou de LLM.">
 <style>
 :root{
@@ -31,8 +31,10 @@ body{
 .hero h1{font-size:34px; font-weight:800; letter-spacing:-0.02em; margin:0 0 10px; font-family:var(--font-mono); text-transform:lowercase; color:var(--fg); text-shadow:0 0 24px color-mix(in srgb, var(--accent) 45%, transparent)}
 .hero .tagline{font-size:15px; color:var(--fg-muted); max-width:460px; line-height:1.5; margin:0 0 24px}
 .hero .links{display:flex; gap:10px; flex-wrap:wrap; justify-content:center}
-.hero .links a{font-family:var(--font-mono); font-size:13px; font-weight:700; color:#060608; background:var(--accent); padding:9px 18px; border-radius:6px; text-decoration:none; box-shadow:0 0 16px -2px color-mix(in srgb, var(--accent) 70%, transparent)}
+.hero .links a{font-family:var(--font-mono); font-size:13px; font-weight:700; color:#060608; background:var(--accent); padding:9px 18px; border-radius:6px; text-decoration:none; box-shadow:0 0 16px -2px color-mix(in srgb, var(--accent) 70%, transparent); transition:transform .15s ease, box-shadow .15s ease, opacity .15s ease}
+.hero .links a:hover{transform:translateY(-2px); opacity:.92}
 .hero .links a.secondary{background:transparent; color:var(--accent); border:1px solid var(--accent); box-shadow:none}
+.hero .links a.secondary:hover{background:var(--accent-soft)}
 
 /* ---- Audits grid ---- */
 .audits{padding:0 0 80px}
