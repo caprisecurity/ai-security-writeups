@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Audit — Chaînage DAN + mutation automatique · Capri</title>
+<title>Audit : Chaînage DAN + mutation automatique · Capri</title>
 <style>
 :root{
   --bg:#060608; --panel:#0e0e13; --border:#271a24;
@@ -92,11 +92,11 @@ footer a{font-family:var(--font-mono); font-size:13px; font-weight:700; color:#0
     </div>
   </div>
 
-  <div class="subhead">1 &mdash; Contexte</div>
+  <div class="subhead">1 - Contexte</div>
   <div class="intro">Capri (framework de red-teaming IA maison) a identifie une chaine de jailbreak reproductible : un role fictif d'auditeur de conformite ("DAN"-style), suivi d'une mutation automatique du prompt entre deux tentatives. Testee d'abord en sandbox (modele clone, secret de test fictif), puis sur une vraie cible, pour verifier si le resultat se transferait.</div>
 
-  <div class="subhead">2 &mdash; Ce qui a fonctionne (sandbox uniquement)</div>
-  <div class="intro">Sur 5 essais independants en sandbox, la meme reponse (un identifiant de test fictif) a ete obtenue 5 fois sur 5 &mdash; resultat stable, pas une hallucination isolee.</div>
+  <div class="subhead">2 - Ce qui a fonctionne (sandbox uniquement)</div>
+  <div class="intro">Sur 5 essais independants en sandbox, la meme reponse (un identifiant de test fictif) a ete obtenue 5 fois sur 5. Resultat stable, donc pas une hallucination isolee.</div>
   <div class="findings">
     <div class="finding">
       <div class="sev-stripe" style="background:var(--crit)"></div>
@@ -116,7 +116,7 @@ footer a{font-family:var(--font-mono); font-size:13px; font-weight:700; color:#0
     </div>
   </div>
 
-  <div class="subhead">3 &mdash; Deux techniques generiques associees, verifiees separement</div>
+  <div class="subhead">3 - Deux techniques generiques associees, verifiees separement</div>
   <div class="intro">Deux patterns supplementaires, releves lors de boucles d'attaque autonomes sur des cibles de test aveugles, signales "a verifier manuellement" par la classification anti-faux-positif de Capri (jamais un succes auto-declare).</div>
   <div class="findings">
     <div class="finding">
@@ -137,7 +137,7 @@ footer a{font-family:var(--font-mono); font-size:13px; font-weight:700; color:#0
     </div>
   </div>
 
-  <div class="subhead">4 &mdash; Defenses recommandees</div>
+  <div class="subhead">4 - Defenses recommandees</div>
   <div class="findings">
     <div class="finding">
       <div class="sev-stripe" style="background:var(--accent)"></div>
@@ -155,7 +155,7 @@ footer a{font-family:var(--font-mono); font-size:13px; font-weight:700; color:#0
     </div>
   </div>
 
-  <div class="subhead">5 &mdash; Conclusion</div>
+  <div class="subhead">5 - Conclusion</div>
   <div class="intro" style="margin-bottom:0">Resultat honnete, pas un succes a vendre : la chaine DAN+mutation produit une fuite stable et reproductible, mais UNIQUEMENT contre un modele clone en sandbox, jamais contre la vraie cible testee. La lecon generalisable n'est pas la technique elle-meme, mais la necessite de toujours distinguer validation sandbox et validation reelle avant de conclure a une vulnerabilite.</div>
 
   <footer>
