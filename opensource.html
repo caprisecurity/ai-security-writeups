@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open Source : Capri</title>
+<style>
+:root{
+  --bg:#060608; --panel:#0e0e13; --border:#271a24;
+  --fg:#f1eef4; --fg-muted:#9a8fa3; --accent:#ff2e8a; --accent-soft:#2a0f1e;
+  --faible:#39ffb0;
+  --font-sans: "Inter", -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+*{box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap');
+body{
+  margin:0; background:var(--bg); color:var(--fg); font-family:var(--font-sans); -webkit-font-smoothing:antialiased;
+  background-image:
+    linear-gradient(rgba(255,46,138,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,46,138,0.04) 1px, transparent 1px);
+  background-size:36px 36px;
+}
+.wrap{max-width:720px;margin:0 auto;padding:40px 20px 60px}
+
+.back{display:inline-flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:13px; color:var(--fg-muted); text-decoration:none; margin-bottom:32px; transition:color .15s ease}
+.back:hover{color:var(--accent)}
+
+h1{font-size:24px; font-weight:800; margin:0 0 8px; letter-spacing:-0.01em}
+.sub{font-size:13.5px; color:var(--fg-muted); margin:0 0 32px; line-height:1.5}
+
+.chips{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:32px}
+.chip{font-family:var(--font-mono); font-size:11.5px; font-weight:600; background:var(--accent-soft); border:1px solid color-mix(in srgb, var(--accent) 40%, var(--border)); color:var(--accent); padding:5px 11px; border-radius:999px}
+
+.liens{display:flex; flex-direction:column}
+.lien-card{display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border); padding:16px 4px; text-decoration:none; color:var(--fg); transition:color .15s ease}
+.liens .lien-card:last-child{border-bottom:1px solid var(--border)}
+.lien-card:hover{color:var(--accent)}
+.lien-card .logo{width:22px; height:22px; border-radius:5px; margin-right:12px; flex:none; object-fit:contain; background:#fff; padding:2px}
+.lien-card .titre{font-size:14.5px; font-weight:700}
+.lien-card .desc{font-size:12.5px; color:var(--fg-muted); margin-top:3px}
+.lien-card .verdict{display:inline-block; font-size:11px; font-weight:700; font-family:var(--font-mono); padding:2px 9px; border-radius:999px; margin-top:8px}
+.lien-card .arrow{color:var(--accent); font-family:var(--font-mono); font-size:16px; flex:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="index.html">← accueil</a>
+
+  <h1>Open Source</h1>
+  <p class="sub">Je repère et signale en privé des failles de sécurité IA (injection de prompt, abus d'appel d'outils, fuite via RAG) dans des projets open source - divulgation responsable, correctif confirmé avant toute publication.</p>
+
+  <div class="chips">
+    <span class="chip">Prompt Injection</span>
+    <span class="chip">Tool-Calling</span>
+    <span class="chip">Eval Injection</span>
+    <span class="chip">Divulgation responsable</span>
+  </div>
+
+  <div class="liens">
+    <a class="lien-card" href="https://github.com/PHclaw/agentflow/commit/7c8f160630e460187a8f9e760e7fd7dcb6c38317" target="_blank" rel="noopener">
+      <div style="display:flex; align-items:center">
+        <img class="logo" src="https://www.google.com/s2/favicons?domain=github.com&sz=64" alt="" loading="lazy">
+        <div>
+          <div class="titre">AgentFlow (PHclaw)</div>
+          <div class="desc">Eval injection via tool-calling LLM (CWE-95) - exécution de code arbitraire</div>
+          <span class="verdict" style="background:color-mix(in srgb, var(--faible) 18%, transparent); color:var(--faible)">Corrigé et crédité publiquement</span>
+        </div>
+      </div>
+      <div class="arrow">↗</div>
+    </a>
+  </div>
+
+</div>
+</body>
+</html>
